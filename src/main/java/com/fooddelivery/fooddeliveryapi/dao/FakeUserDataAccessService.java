@@ -3,6 +3,7 @@ package com.fooddelivery.fooddeliveryapi.dao;
 import com.fooddelivery.fooddeliveryapi.model.User;
 import org.springframework.stereotype.Repository;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,5 +49,24 @@ public class FakeUserDataAccessService implements UserDao {
         }
         Database.remove(user.get());
         return 1;
+    }
+
+    @Override
+    public int updateUser(UUID id, User user) {
+        return selectUserById(id).map(prevUser -> {
+           int indexOfUser = Database.indexOf(prevUser);
+           if(indexOfUser >= 0){
+               Database.set(indexOfUser, new User(
+                       id,
+                       user.getFirstName(),
+                       user.getLastName(),
+                       user.getEmail(),
+                       user.getPassword(),
+                       user.getProfileImage()
+               ));
+               return 1;
+           }
+           return 0;
+        }).orElse(0);
     }
 }
