@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "565bafa7-ed5e-4613-afa0-d8aef5090302",
+		"name": "FOAD API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"Christopher\",\n\t\"lastName\": \"Shoo\",\n\t\"email\": \"christopher@email.com\",\n\t\"password\": \"secret\",\n\t\"profileImage\": \"url to image\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": "add new user to the database"
+			},
+			"response": []
+		},
+		{
+			"name": "update existing user ",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstName\": \"RishaEli\",\n\t\"lastName\": \"Shoo\",\n\t\"email\": \"christopher@email.com\",\n\t\"password\": \"secret\",\n\t\"profileImage\": \"url to image\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/user/7e0f8447-124f-4476-bd70-e337b8469659",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"7e0f8447-124f-4476-bd70-e337b8469659"
+					]
+				},
+				"description": "update existing user by their id, the hash code at the end of the url is the user id"
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				},
+				"description": "Get all users existing in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "get single user by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/user/d3d64b3c-720e-4bfb-a507-b598cb9be5cd",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"d3d64b3c-720e-4bfb-a507-b598cb9be5cd"
+					]
+				},
+				"description": "Get specific user from database by their id"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
