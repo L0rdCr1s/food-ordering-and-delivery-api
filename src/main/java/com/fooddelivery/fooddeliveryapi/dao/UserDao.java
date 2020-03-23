@@ -3,6 +3,7 @@ package com.fooddelivery.fooddeliveryapi.dao;
 import com.fooddelivery.fooddeliveryapi.model.User;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface UserDao {
@@ -15,4 +16,6 @@ public interface UserDao {
     }
 
     List<User> selectAllUsers();
+    Optional<User> selectUserById(UUID id);
+    int deleteUser(UUID id);
 }
