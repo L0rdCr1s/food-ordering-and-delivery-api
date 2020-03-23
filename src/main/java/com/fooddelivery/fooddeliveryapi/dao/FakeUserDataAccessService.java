@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository("FakeDao")
@@ -30,5 +31,22 @@ public class FakeUserDataAccessService implements UserDao {
     @Override
     public List<User> selectAllUsers() {
         return Database;
+    }
+
+    @Override
+    public Optional<User> selectUserById(UUID id) {
+        return Database.stream().filter(user -> user.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public int deleteUser(UUID id) {
+        /**Check if user exists in our database and delete them,
+         * otherwise return 0 as user not found status */
+        Optional<User> user = selectUserById(id);
+        if(user.isEmpty()){
+            return  0;
+        }
+        Database.remove(user.get());
+        return 1;
     }
 }
