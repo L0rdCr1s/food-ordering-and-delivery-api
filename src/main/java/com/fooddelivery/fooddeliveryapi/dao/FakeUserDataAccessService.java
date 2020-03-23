@@ -40,6 +40,13 @@ public class FakeUserDataAccessService implements UserDao {
 
     @Override
     public int deleteUser(UUID id) {
+        /**Check if user exists in our database and delete them,
+         * otherwise return 0 as user not found status */
+        Optional<User> user = selectUserById(id);
+        if(user.isEmpty()){
+            return  0;
+        }
+        Database.remove(user.get());
         return 1;
     }
 }
