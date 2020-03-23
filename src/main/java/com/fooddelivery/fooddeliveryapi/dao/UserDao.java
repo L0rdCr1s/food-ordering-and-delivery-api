@@ -9,6 +9,7 @@ public interface UserDao {
     int insertUser(UUID id, User user);
 
     default int insertUser(User user){
+        /**Auto-generate user id whenever new user is created */
         UUID id = UUID.randomUUID();
         return insertUser(id, user);
     }

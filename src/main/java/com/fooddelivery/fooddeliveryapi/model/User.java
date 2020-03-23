@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.UUID;
 
 public class User {
+    /**This defines all users of the system, from system administrators,
+     * restaurant owners, delivery men(women) and customers,UserRoles model
+     * will be used to differentiate their role.
+     * */
     private final UUID id;
     private final String firstName;
     private final String lastName;
@@ -18,6 +22,10 @@ public class User {
             @JsonProperty("lastName") String lastName,
             @JsonProperty("email") String email,
             @JsonProperty("password") String password,
+
+            /**For now user's profile image is taken as just a dummy
+             * string, online image url could be passed too, it will not
+             * change until proper file uploading feature is added*/
             @JsonProperty("profileImage") String profileImage
     ) {
         this.id = id;

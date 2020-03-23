@@ -9,6 +9,9 @@ import java.util.UUID;
 
 @Repository("FakeDao")
 public class FakeUserDataAccessService implements UserDao {
+    /**Because connection to a real database is not implemented,
+     * currently users are stored in the List collection, this should
+     * explain data being reset during server restarting*/
     private static List<User> Database = new ArrayList<>();
 
     @Override
